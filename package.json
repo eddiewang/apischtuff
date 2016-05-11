@@ -107,7 +107,9 @@
     "webpack-split-by-path": "0.0.8"
   },
   "dependencies": {
+    "consign": "^0.1.2",
     "express": "^4.13.3",
+    "firebase": "^2.4.2",
     "helmet": "^2.0.0",
     "http-proxy": "^1.12.1",
     "winston": "^2.1.1"

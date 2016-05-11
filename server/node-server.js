@@ -3,6 +3,7 @@ const winston = require('winston');
 const helmet = require('helmet');
 const nodeProxy = require('./node-proxy');
 const nodeAppServer = require('./node-app-server');
+// import consign from 'consign';
 
 /**
  * Heroku-friendly production http server.
@@ -19,6 +20,21 @@ app.use(helmet());
 // API proxy logic: if you need to talk to a remote server from your client-side
 // app you can proxy it though here by editing ./proxy-config.js
 nodeProxy(app);
+
+// API
+app.get('/user', (req, res) => {
+  res.json({
+    user: 'eddie',
+    email: 'eddie@eddiewang.me',
+  });
+});
+
+app.get('/api/user', (req, res) => {
+  res.send({
+    user: 'eddie',
+    email: 'eddie@eddiewang.me',
+  });
+});
 
 // Serve the distributed assets and allow HTML5 mode routing. NB: must be last.
 nodeAppServer(app);
